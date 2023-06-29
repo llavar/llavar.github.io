@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/954/954591.png">
+  <link rel="icon" href="images/gatech.png">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
@@ -107,8 +107,6 @@
 </style>
 
 <body>
-
-
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
@@ -118,25 +116,33 @@
             <h3 class="title is-3 publication-title">for Text-rich Image Understanding</h3>
             <div class="is-size-5">
               <span class="author-block">
-                <a href="TBD" style="color:#f68946;font-weight:normal;">Yanzhe Zhang</a>,
+                <a href="https://stevenyzzhang.github.io/website/" style="color:#f68946;font-weight:normal;">Yanzhe Zhang</a>,
               </span>
               <span class="author-block">
-                <a href="TBD" style="color:#008AD7;font-weight:normal;">Ruiyi Zhang</a>,
+                <a href="https://zhangry868.github.io/" style="color:#008AD7;font-weight:normal;">Ruiyi Zhang</a>,
               </span>
               <span class="author-block">
-                <a href="TBD" style="color:#008AD7;font-weight:normal;">Jiuxiang Gu</a>,
+                <a href="https://gujiuxiang.com/" style="color:#008AD7;font-weight:normal;">Jiuxiang Gu</a>,
               </span>
               <span class="author-block">
-                <a href="TBD" style="color:#F2A900;font-weight:normal;">Diyi Yang</a>,
+                <a href="https://yufanzhou.com/" style="color:#008AD7;font-weight:normal;">Yufan Zhou</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://research.adobe.com/person/nedim-lipka/" style="color:#008AD7;font-weight:normal;">Nedim Lipka</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://cs.stanford.edu/~diyiy/" style="color:#F2A900;font-weight:normal;">Diyi Yang</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://research.adobe.com/person/tong-sun/" style="color:#008AD7;font-weight:normal;">Tong Sun</a>
               </span>
             </div>
 
             <br>
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><b style="color:#f68946; font-weight:normal">&#x25B6 </b> GaTech</b></span>
+              <span class="author-block"><b style="color:#f68946; font-weight:normal">&#x25B6 </b> Georgia Tech</b></span>
               <span class="author-block"><b style="color:#008AD7; font-weight:normal">&#x25B6 </b> Adobe Research</span>
-              <span class="author-block"><b style="color:#F2A900; font-weight:normal">&#x25B6 </b>Stanford
-                University</span>
+              <span class="author-block"><b style="color:#F2A900; font-weight:normal">&#x25B6 </b>Stanford University</span>
               <!-- <span class="author-block">&nbsp&nbsp<sup>*</sup>Equal Contribution</span> -->
             </div>
 
@@ -144,7 +150,7 @@
             <div class="column has-text-centered">
               <div class="publication-links">
                 <span class="link-block">
-                  <a href="TBD" target="_blank"
+                  <a target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -153,7 +159,7 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="TBD" target="_blank"
+                  <a href="https://drive.google.com/file/d/1oHSIuSCoCaOLA33-ENX0n_U5uiwJfjMQ/view?usp=sharing" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -162,7 +168,7 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="TBD" target="_blank"
+                  <a  target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="far fa-images"></i>
@@ -171,7 +177,7 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="TBD" target="_blank"
+                  <a  href="#data" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-database"></i>
@@ -180,7 +186,7 @@
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="TBD" target="_blank"
+                  <a href="https://drive.google.com/drive/folders/19uEwM1VrzX_KqCzzSJAh8RqOHbf4WS5Z?usp=sharing" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-share-square"></i>
@@ -200,9 +206,386 @@
     <div class="container is-max-desktop">
       <div class="hero-body">
         <h4 class="subtitle has-text-centered">
-          LLaVAR Introductions
+          <figure style="text-align: center;">
+            <img id="teaser" width="80%" src="images/teaser.png"> 
+          </figure>
+          <strong>LLaVAR</strong>: The LLaVA model that can <strong>R</strong>ead texts within images.
         </h4>
       </div>
+    </div>
+  </section>
+
+  <section class="section"  style="background-color:#efeff081">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Instruction tuning unlocks the superior capability of Large Language Models (LLM) to interact with humans. Furthermore, recent instruction-following datasets include images as visual inputs, collecting responses for image-based instructions. However, visual instruction-tuned models cannot comprehend textual details within images well. This work enhances the current visual instruction tuning pipeline with text-rich images (e.g., movie posters, book covers, etc.). Specifically, we first use publicly available OCR tools to collect results on 422K text-rich images from the LAION dataset. Moreover, we prompt text-only GPT-4 with recognized texts and image captions to generate 16K conversations, each containing question-answer pairs for text-rich images. By combining our collected data with previous multi-modal instruction-following data, our model, <strong>LLaVAR</strong>, substantially improves the LLaVA model's capability on text-based VQA datasets (up to 20% accuracy improvement) while also improving its performance on natural images. Through qualitative analysis, LLaVAR shows promising interaction (e.g., reasoning, writing, and elaboration) skills with humans based on the latest real-world online content that combines text and images.
+           </p>
+          <br>
+           <p>
+            <strong>[UPDATE 06/29] Initial Release of Data/Code/Model. Demo/Github/Huggingface is on the way!</strong> The released model checkpoint should be merged with LLaMA 13B.
+         </p>
+  
+          </div>
+        </div>
+      </div>
+        
+    </div>
+  </section>
+
+  <section id="data" class="section">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">Enhanced Visual Instruction Data with Text-Rich Images</h2>
+      </div>
+    </div>
+    <!-- </div> -->
+    <!--/ Results. -->    
+  <div class="container is-max-desktop">
+  
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+          <p>
+            Based on the LAION dataset, we collect 422K pretraining data based on OCR results. We also collect 16K high-quality instruction-following data by interacting with langauge-only GPT-4. We release a larger and more diverse finetuning dataset below (20K), which contains the 16K we used for the paper. Note that the instruction files below contain the original LLaVA instructions. You can directly use them after merging the images into your LLaVA image folders. If you want to use them independantly, you can remove the items that contained in the original chat.json and llava_instruct_150k.json from LLaVA.
+  
+  <!-- CSS Code: Place this code in the document's head (between the 'head' tags) -->
+  <style>
+    table.GeneratedTable {
+      width: 100%;
+      background-color: #ffffff;
+      border-collapse: collapse;
+      border-width: 2px;
+      border-color: #c1c4c5;
+      border-style: solid;
+      color: #000000;
+    }
+    
+    table.GeneratedTable td, table.GeneratedTable th {
+      border-width: 2px;
+      border-color: #9b9d9e;
+      border-style: solid;
+      padding: 3px;
+    }
+    
+    table.GeneratedTable thead {
+      background-color: #6691ee;
+    }
+    </style>
+    
+    <!-- HTML Code: Place this code in the document's body (between the 'body' tags) where the table should appear -->
+    <div class="column is-six-fifths" width="80%">
+    <table class="GeneratedTable">
+      <thead>
+        <tr>
+          <th>Data file name</th>
+          <th>File Size</th>
+          <th>Sample Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1zWpqnAcaG_dUwkJJUvP9FH9zq__c-ODY/view?usp=sharing">pretraining images</a> </td>
+          <td>12.5 GB</td>
+          <td>422K</td>
+        </tr>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1_GCHFwrPGjp-9tZlDBwVkdz-L1ymchKY/view?usp=sharing">pretraining instructions</a></td>
+          <td>388.7 MB</td>
+          <td>585K + 422K</td>
+        </tr>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1Ms7OCjcFQ18Whmujszpc9bTp0Jy0Dye4/view?usp=sharing">finetuning images</a></td>
+          <td>574.8 MB</td>
+          <td>20K</td>
+        </tr>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1ISdKOV1wwVkLHf5FNutctpOBa-CmNRFv/view?usp=sharing">finetuning instructions - 16K</a></td>
+          <td>255.5 MB</td>
+          <td>158K + 16K</td>
+        </tr>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1NHO8lly6pUo-fdyOAyWeGiQJWRb9qggk/view?usp=sharing">finetuning instructions - 20K</a></td>
+          <td>259.4 MB</td>
+          <td>158K + 20K</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <!-- Codes by Quackit.com -->
+    
+          </p>
+          <p>
+            Images are all text-rich images from LAION, where we apply different filtering rules for pretraining and finetuning.
+          </p>
+        </div>
+  
+    
+  
+  
+  
+  
+        <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
+          <figure style="text-align: center;">
+            <img id="teaser" width="100%" src="images/pretrain_data.png">  
+            <figcaption>
+              Pretraining Images
+            </figcaption>
+          </figure>
+          <figure style="text-align: center;">
+            <img id="teaser" width="100%" src="images/finetune_data.png">  
+            <figcaption>
+              Finetuning Images
+            </figcaption>
+          </figure>
+        </div>
+        </div>
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
+            <figure style="text-align: center;">
+              <img id="teaser" width="50%" src="images/legend.png"> 
+            </figure>
+          </div>
+          </div> 
+
+          <p>
+            We visualize the root verb-noun pairs and objects that are being asked in instructions generated by GPT-4.
+          </p>
+  
+  
+  
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
+              <figure style="text-align: center;">
+                <img id="teaser" width="100%" src="images/vb.png">  
+                <figcaption>
+                  Verb-Noun Pairs
+                </figcaption>
+              </figure>
+              <figure style="text-align: center;">
+                <img id="teaser" width="100%" src="images/pron.png">  
+                <figcaption>
+                  Objects
+                </figcaption>
+              </figure>
+            </div>
+          </div>    
+
+      </div>
+    </div>
+  
+  
+  </section>
+
+
+  <section class="section" style="background-color:#efeff081">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">Performance</h2>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              We evaluate the performance of LLaVAR on four text-based VQA datasets: ST-VQA, OCR-VQA, TextVQA, and DocVQA. LLaVAR also achieves an accuracy of 91.42% on ScienceQA.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
+              <figure style="text-align: center;">
+                <img id="teaser" width="70%" src="images/myplot.png"> 
+              </figure>
+            </div>
+            </div> 
+  
+      </div>
+    </div>
+  
+  
+  </section>
+
+  <section class="section">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">Evaluation Data</h2>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              We collect 50 instruction-following data on 50 text-rich images from LAION.
+  <!-- CSS Code: Place this code in the document's head (between the 'head' tags) -->
+  <style>
+    table.GeneratedTable {
+      width: 100%;
+      background-color: #ffffff;
+      border-collapse: collapse;
+      border-width: 2px;
+      border-color: #c1c4c5;
+      border-style: solid;
+      color: #000000;
+    }
+    
+    table.GeneratedTable td, table.GeneratedTable th {
+      border-width: 2px;
+      border-color: #9b9d9e;
+      border-style: solid;
+      padding: 3px;
+    }
+    
+    table.GeneratedTable thead {
+      background-color: #6691ee;
+    }
+    </style>
+    
+    <!-- HTML Code: Place this code in the document's body (between the 'body' tags) where the table should appear -->
+    <div class="column is-six-fifths" width="80%">
+    <table class="GeneratedTable">
+      <thead>
+        <tr>
+          <th>Data file name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1tQQ6CX0fCH2kMuI9imrcEkYRWoVKScWX/view?usp=sharing">Images</a> </td>
+        </tr>
+        <tr>
+          <td><a href="./files/caps_laion_50_val.jsonl">GPT-4 Evaluation Contexts</a></td>
+        </tr>
+        <tr>
+          <td><a href="./files/rule_read_v3.json">GPT-4 Evaluation Rules</a></td>
+        </tr>
+        <tr>
+          <td><a href="./files/qa50_questions.jsonl">Questions</a></td>
+        </tr>
+        <tr>
+          <td><a href="./files/qa50_gpt4_answer.jsonl">GPT-4 Answers</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered">
+            <div>
+              <figure style="text-align: center;">
+                <img id="teaser" width="100%" src="images/read_whole.png"> 
+              </figure>
+            </div>
+          
+            </div> 
+  
+      </div>
+    </div>
+    
+  </section>
+
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">More Examples</h2>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              We show more instruction-following examples below:
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered">
+            <div>
+              <figure style="text-align: center;">
+                <img id="teaser" width="80%" src="images/demo1.png"> 
+              </figure>
+            </div>
+          
+            </div> 
+  
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered">
+            <div>
+              <figure style="text-align: center;">
+                <img id="teaser" width="80%" src="images/demo2.png"> 
+              </figure>
+            </div>
+          
+            </div> 
+  
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered">
+            <div>
+              <figure style="text-align: center;">
+                <img id="teaser" width="80%" src="images/demo3.png"> 
+              </figure>
+            </div>
+          
+            </div> 
+  
+      </div>
+    </div>
+  </section>
+  
+  <section class="section" id="Acknowledgement">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Acknowledgement</h2>
+      <p>
+        This website is adapted from <a
+        href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+        Commons Attribution-ShareAlike 4.0 International License</a>.  We thank the LLaMA team for giving us access to their models, and open-source projects, including Alpaca, Vicuna, and LLaVA.
+      </p>
+
+      <p>
+<b>Usage and License Notices</b>: The data, code and checkpoint is intended and licensed for research use only. They are also restricted to uses that follow the license agreement of CLIP,  LLaMA, Vicuna, GPT-4 and LLaVA. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes.
+</p>
     </div>
   </section>
 
