@@ -226,6 +226,9 @@
               Instruction tuning unlocks the superior capability of Large Language Models (LLM) to interact with humans. Furthermore, recent instruction-following datasets include images as visual inputs, collecting responses for image-based instructions. However, visual instruction-tuned models cannot comprehend textual details within images well. This work enhances the current visual instruction tuning pipeline with text-rich images (e.g., movie posters, book covers, etc.). Specifically, we first use publicly available OCR tools to collect results on 422K text-rich images from the LAION dataset. Moreover, we prompt text-only GPT-4 with recognized texts and image captions to generate 16K conversations, each containing question-answer pairs for text-rich images. By combining our collected data with previous multi-modal instruction-following data, our model, LLaVAR, substantially improves the LLaVA model's capability on text-based VQA datasets (up to 20% accuracy improvement) while achieving an accuracy of 91.42% on ScienceQA. The GPT-4-based instruction-following evaluation also demonstrates the improvement of our model on both natural images and text-rich images. Through qualitative analysis, LLaVAR shows promising interaction (e.g., reasoning, writing, and elaboration) skills with humans based on the latest real-world online content that combines text and images.</p>
           <br>
           <p>
+            <strong>[UPDATE 07/05] Data available on <a href="https://huggingface.co/datasets/SALT-NLP/LLaVAR">Huggingface</a>.</strong>
+         </p>
+          <p>
             <strong>[UPDATE 07/05] Model checkpoint (delta) available on <a href="https://huggingface.co/SALT-NLP/LLaVAR_delta/tree/main">Huggingface</a>.</strong>
          </p>
            <p>
@@ -254,7 +257,7 @@
       <div class="column is-full-width">
         <div class="content has-text-justified">
           <p>
-            Based on the LAION dataset, we collect 422K pretraining data based on OCR results. For finetuning data, we collect 16K high-quality instruction-following data by interacting with langauge-only GPT-4. Note that we also release a larger and more diverse finetuning dataset below (20K), which contains the 16K we used for the paper. The instruction files below contain the original LLaVA instructions. You can directly use them after merging the images into your LLaVA image folders. If you want to use them independantly, you can remove the items that contained in the original chat.json and llava_instruct_150k.json from LLaVA.
+            Based on the LAION dataset, we collect 422K pretraining data based on OCR results. For finetuning data, we collect 16K high-quality instruction-following data by interacting with langauge-only GPT-4. Note that we also release a larger and more diverse finetuning dataset below (20K), which contains the 16K we used for the paper. The instruction files below contain the original LLaVA instructions. You can directly use them after merging the images into your LLaVA image folders. If you want to use them independently, you can remove the items contained in the original chat.json and llava_instruct_150k.json from LLaVA.
   
   <!-- CSS Code: Place this code in the document's head (between the 'head' tags) -->
   <style>
@@ -292,27 +295,27 @@
       </thead>
       <tbody>
         <tr>
-          <td><a href="https://drive.google.com/file/d/1zWpqnAcaG_dUwkJJUvP9FH9zq__c-ODY/view?usp=sharing">pretraining images</a> </td>
+          <td><a href="https://drive.google.com/file/d/1zWpqnAcaG_dUwkJJUvP9FH9zq__c-ODY/view?usp=sharing">Pretraining images</a> </td>
           <td>12.5 GB</td>
           <td>422K</td>
         </tr>
         <tr>
-          <td><a href="https://drive.google.com/file/d/1_GCHFwrPGjp-9tZlDBwVkdz-L1ymchKY/view?usp=sharing">pretraining instructions</a></td>
+          <td><a href="https://drive.google.com/file/d/1_GCHFwrPGjp-9tZlDBwVkdz-L1ymchKY/view?usp=sharing">Pretraining instructions</a></td>
           <td>388.7 MB</td>
           <td>595K + 422K</td>
         </tr>
         <tr>
-          <td><a href="https://drive.google.com/file/d/1Ms7OCjcFQ18Whmujszpc9bTp0Jy0Dye4/view?usp=sharing">finetuning images</a></td>
+          <td><a href="https://drive.google.com/file/d/1Ms7OCjcFQ18Whmujszpc9bTp0Jy0Dye4/view?usp=sharing">Finetuning images</a></td>
           <td>574.8 MB</td>
           <td>20K</td>
         </tr>
         <tr>
-          <td><a href="https://drive.google.com/file/d/1ISdKOV1wwVkLHf5FNutctpOBa-CmNRFv/view?usp=sharing">finetuning instructions - 16K</a></td>
+          <td><a href="https://drive.google.com/file/d/1ISdKOV1wwVkLHf5FNutctpOBa-CmNRFv/view?usp=sharing">Finetuning instructions - 16K</a></td>
           <td>255.5 MB</td>
           <td>158K + 16K</td>
         </tr>
         <tr>
-          <td><a href="https://drive.google.com/file/d/1NHO8lly6pUo-fdyOAyWeGiQJWRb9qggk/view?usp=sharing">finetuning instructions - 20K</a></td>
+          <td><a href="https://drive.google.com/file/d/1NHO8lly6pUo-fdyOAyWeGiQJWRb9qggk/view?usp=sharing">Finetuning instructions - 20K</a></td>
           <td>259.4 MB</td>
           <td>158K + 20K</td>
         </tr>
