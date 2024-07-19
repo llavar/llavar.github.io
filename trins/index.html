@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="TRINS: Towards Multimodal Language Models that Can Read">
+  <meta name="keywords" content="multimodal chatbot">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LLaVAR</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="images/gatech.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.27.0/gradio.js"></script>
+</head>
+
+<style>
+  .expandable-card .card-text-container {
+    max-height: 200px;
+    overflow-y: hidden;
+    position: relative;
+  }
+
+  .expandable-card.expanded .card-text-container {
+    max-height: none;
+  }
+
+  .expand-btn {
+    position: relative;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* margin-top: -20px; */
+    /* justify-content: center; */
+    color: #510c75;
+    border-color: transparent;
+  }
+
+  .expand-btn:hover {
+    background-color: rgba(200, 200, 200, 0.8);
+    text-decoration: none;
+    border-color: transparent;
+    color: #510c75;
+  }
+
+  .expand-btn:focus {
+    outline: none;
+    text-decoration: none;
+  }
+
+  .expandable-card:not(.expanded) .card-text-container:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 1));
+  }
+
+  .expandable-card:not(.expanded) .expand-btn {
+    margin-top: -40px;
+  }
+
+  .card-body {
+    padding-bottom: 5px;
+  }
+
+  .vertical-flex-layout {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .figure-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .adjustable-font-size {
+    font-size: calc(0.5rem + 2vw);
+  }
+
+  .chat-history {
+    flex-grow: 1;
+    overflow-y: auto;
+    /* overflow-x: hidden; */
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  #gradio pre {
+    background-color: transparent;
+  }
+</style>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">TRINS: Towards Multimodal Language Models </h1>
+            <h2 class="title is-2 publication-title"> that Can Read</h2>
+            <div class="is-size-5">
+              <span class="author-block">
+                <a href="https://zhangry868.github.io/" style="color:#008AD7;font-weight:normal;">Ruiyi Zhang</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://stevenyzzhang.github.io/website/" style="color:#f68946;font-weight:normal;">Yanzhe Zhang</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://puar-playground.github.io/about-me/" style="color:#F2A900;font-weight:normal;">Jian Chen</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://yufanzhou.com/" style="color:#008AD7;font-weight:normal;">Yufan Zhou</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://gujiuxiang.com/" style="color:#008AD7;font-weight:normal;">Jiuxiang Gu</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://cse.buffalo.edu/~changyou/" style="color:#F2A900;font-weight:normal;">Changyou Chen</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://research.adobe.com/person/tong-sun/" style="color:#008AD7;font-weight:normal;">Tong Sun</a>
+              </span>
+            </div>
+
+            <br>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><b style="color:#f68946; font-weight:normal">&#x25B6 </b> Georgia Tech</b></span>
+              <span class="author-block"><b style="color:#008AD7; font-weight:normal">&#x25B6 </b> Adobe Research</span>
+              <span class="author-block"><b style="color:#F2A900; font-weight:normal">&#x25B6 </b> University at Buffalo</span>
+              <!-- <span class="author-block">&nbsp&nbsp<sup>*</sup>Equal Contribution</span> -->
+            </div>
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2306.17107" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/SALT-NLP/LLaVAR" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a  href="#data" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-database"></i>
+                    </span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://huggingface.co/SALT-NLP/LLaVAR_delta/tree/main" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-share-square"></i>
+                    </span>
+                    <span>Model</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <h4 class="subtitle has-text-centered">
+          <figure style="text-align: center;">
+            <img id="teaser" width="100%" src="images/DataOverview.png"> 
+          </figure>
+          <strong>TRINS</strong>: a Text-Rich image <strong>INS</strong>truction dataset.
+        </h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="section"  style="background-color:#efeff081">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Large multimodal language models have shown remarkable proficiency in understanding and editing images. However, a majority of these visually-tuned models struggle to comprehend the textual content embedded in images, primarily due to the limitation of training data. In this work, we introduce TRINS: a Text-Rich image INStruction dataset, with the objective of enhancing the reading ability of the multimodal large language model. TRINS is built upon LAION using hybrid data annotation strategies that include machine-assisted and human-assisted annotation processes. It contains 39,153 text-rich images, captions, and 102,437 questions. Specifically, we show that the number of words per annotation in TRINS is significantly longer than that of related datasets, providing new challenges. Furthermore, we introduce a simple and effective architecture, called a Language-Vision Reading Assistant (LaRA), which is good at understanding textual content within images. LaRA outperforms existing state-of-the-art multimodal large language models on the TRINS dataset as well as other classical benchmarks. Lastly, we conducted a comprehensive evaluation with TRINS on various text-rich image understanding and generation tasks, demonstrating its effectiveness.
+            </p>  
+          <p>
+            <strong>[UPDATE 06/06] Initial Paper Release of TRINS.</strong>
+         </p>
+  
+          </div>
+        </div>
+      </div>
+        
+    </div>
+  </section>
+
+  <section id="data" class="section">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">Enhanced Visual Instruction Data with Text-Rich Images</h2>
+      </div>
+    </div>
+    <!-- </div> -->
+    <!--/ Results. -->    
+  <div class="container is-max-desktop">
+  
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+          <p>
+            Based on the LAION dataset, we collect 422K pretraining data based on OCR results. For finetuning data, we collect 16K high-quality instruction-following data by interacting with langauge-only GPT-4. Note that we also release a larger and more diverse finetuning dataset below (20K), which contains the 16K we used for the paper. The instruction files below contain the original LLaVA instructions. You can directly use them after merging the images into your LLaVA image folders. If you want to use them independently, you can remove the items contained in the original chat.json and llava_instruct_150k.json from LLaVA.
+  
+  <!-- CSS Code: Place this code in the document's head (between the 'head' tags) -->
+  <style>
+    table.GeneratedTable {
+      width: 100%;
+      background-color: #ffffff;
+      border-collapse: collapse;
+      border-width: 2px;
+      border-color: #c1c4c5;
+      border-style: solid;
+      color: #000000;
+    }
+    
+    table.GeneratedTable td, table.GeneratedTable th {
+      border-width: 2px;
+      border-color: #9b9d9e;
+      border-style: solid;
+      padding: 3px;
+    }
+    
+    table.GeneratedTable thead {
+      background-color: #6691ee;
+    }
+    </style>
+    
+    <!-- HTML Code: Place this code in the document's body (between the 'body' tags) where the table should appear -->
+    <div class="column is-six-fifths" width="80%">
+    <table class="GeneratedTable">
+      <thead>
+        <tr>
+          <th>Data file name</th>
+          <th>File Size</th>
+          <th>Sample Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1zWpqnAcaG_dUwkJJUvP9FH9zq__c-ODY/view?usp=sharing">Pretraining images</a> </td>
+          <td>12.5 GB</td>
+          <td>422K</td>
+        </tr>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1_GCHFwrPGjp-9tZlDBwVkdz-L1ymchKY/view?usp=sharing">Pretraining instructions</a></td>
+          <td>388.7 MB</td>
+          <td>595K + 422K</td>
+        </tr>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1Ms7OCjcFQ18Whmujszpc9bTp0Jy0Dye4/view?usp=sharing">Finetuning images</a></td>
+          <td>574.8 MB</td>
+          <td>20K</td>
+        </tr>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1ISdKOV1wwVkLHf5FNutctpOBa-CmNRFv/view?usp=sharing">Finetuning instructions - 16K</a></td>
+          <td>255.5 MB</td>
+          <td>158K + 16K</td>
+        </tr>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1NHO8lly6pUo-fdyOAyWeGiQJWRb9qggk/view?usp=sharing">Finetuning instructions - 20K</a></td>
+          <td>259.4 MB</td>
+          <td>158K + 20K</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <!-- Codes by Quackit.com -->
+    
+          </p>
+          <p>
+            Images are all text-rich images from LAION, where we apply different filtering rules for pretraining and finetuning.
+          </p>
+        </div>
+  
+    
+  
+  
+  
+  
+        <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
+          <figure style="text-align: center;">
+            <img id="teaser" width="100%" src="images/pretrain_data.png">  
+            <figcaption>
+              Pretraining Images
+            </figcaption>
+          </figure>
+          <figure style="text-align: center;">
+            <img id="teaser" width="100%" src="images/finetune_data.png">  
+            <figcaption>
+              Finetuning Images
+            </figcaption>
+          </figure>
+        </div>
+        </div>
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
+            <figure style="text-align: center;">
+              <img id="teaser" width="50%" src="images/legend.png"> 
+            </figure>
+          </div>
+          </div> 
+
+          <p>
+            We visualize the root verb-noun pairs and objects that are being asked in instructions generated by GPT-4.
+          </p>
+  
+  
+  
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
+              <figure style="text-align: center;">
+                <img id="teaser" width="100%" src="images/vb.png">  
+                <figcaption>
+                  Verb-Noun Pairs
+                </figcaption>
+              </figure>
+              <figure style="text-align: center;">
+                <img id="teaser" width="100%" src="images/pron.png">  
+                <figcaption>
+                  Objects
+                </figcaption>
+              </figure>
+            </div>
+          </div>    
+
+      </div>
+    </div>
+  
+  
+  </section>
+
+
+  <section class="section" style="background-color:#efeff081">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">Performance</h2>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              We evaluate the performance of LLaVAR on four text-based VQA datasets: ST-VQA, OCR-VQA, TextVQA, and DocVQA. LLaVAR also achieves an accuracy of 91.42% on ScienceQA.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
+              <figure style="text-align: center;">
+                <img id="teaser" width="70%" src="images/myplot.png"> 
+              </figure>
+            </div>
+            </div> 
+  
+      </div>
+    </div>
+  
+  
+  </section>
+
+  <section class="section">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">Evaluation Data</h2>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              We collect 50 instruction-following data on 50 text-rich images from LAION. You can use it for <a href="https://github.com/haotian-liu/LLaVA/tree/main#gpt-assisted-evaluation">GPT-4-based instruction-following evaluation</a>.
+  <!-- CSS Code: Place this code in the document's head (between the 'head' tags) -->
+  <style>
+    table.GeneratedTable {
+      width: 100%;
+      background-color: #ffffff;
+      border-collapse: collapse;
+      border-width: 2px;
+      border-color: #c1c4c5;
+      border-style: solid;
+      color: #000000;
+    }
+    
+    table.GeneratedTable td, table.GeneratedTable th {
+      border-width: 2px;
+      border-color: #9b9d9e;
+      border-style: solid;
+      padding: 3px;
+    }
+    
+    table.GeneratedTable thead {
+      background-color: #6691ee;
+    }
+    </style>
+    
+    <!-- HTML Code: Place this code in the document's body (between the 'body' tags) where the table should appear -->
+    <div class="column is-six-fifths" width="80%">
+    <table class="GeneratedTable">
+      <thead>
+        <tr>
+          <th>Data file name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://drive.google.com/file/d/1tQQ6CX0fCH2kMuI9imrcEkYRWoVKScWX/view?usp=sharing">Images</a> </td>
+        </tr>
+        <tr>
+          <td><a href="./files/caps_laion_50_val.jsonl">GPT-4 Evaluation Contexts</a></td>
+        </tr>
+        <tr>
+          <td><a href="./files/rule_read_v3.json">GPT-4 Evaluation Rules</a></td>
+        </tr>
+        <tr>
+          <td><a href="./files/qa50_questions.jsonl">Questions</a></td>
+        </tr>
+        <tr>
+          <td><a href="./files/qa50_gpt4_answer.jsonl">GPT-4 Answers</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered">
+            <div>
+              <figure style="text-align: center;">
+                <img id="teaser" width="100%" src="images/read_whole.png"> 
+              </figure>
+            </div>
+          
+            </div> 
+  
+      </div>
+    </div>
+    
+  </section>
+
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3">More Examples</h2>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              We show more instruction-following examples below:
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered">
+            <div>
+              <figure style="text-align: center;">
+                <img id="teaser" width="80%" src="images/demo1.png"> 
+              </figure>
+            </div>
+          
+            </div> 
+  
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered">
+            <div>
+              <figure style="text-align: center;">
+                <img id="teaser" width="80%" src="images/demo2.png"> 
+              </figure>
+            </div>
+          
+            </div> 
+  
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+          <div class="columns is-centered has-text-centered">
+            <div>
+              <figure style="text-align: center;">
+                <img id="teaser" width="80%" src="images/demo3.png"> 
+              </figure>
+            </div>
+          
+            </div> 
+  
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+        @inproceedings{trins2023zhang,
+          title={TRINS: Towards Multimodal Language Models that Can Read},
+          author={Zhang, Ruiyi and Zhang, Yanzhe and Chen, Jian and Zhou, Yufan and Gu, Jiuxiang and Chen, Changyou and Sun, Tong},
+          booktitle={proceedings of the IEEE/CVF conference on computer vision and pattern recognition},
+          year={2024}
+        }
+  </code></pre>
+    </div>
+  </section>
+  
+  <section class="section" id="Acknowledgement">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Acknowledgement</h2>
+      <p>
+        This website is adapted from <a
+        href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+        Commons Attribution-ShareAlike 4.0 International License</a>.  We thank the LLaMA team for giving us access to their models, and open-source projects, including Alpaca, Vicuna, and LLaVA.
+      </p>
+
+      <p>
+<b>Usage and License Notices</b>: The data, code and checkpoint is intended and licensed for research use only. They are also restricted to uses that follow the license agreement of CLIP,  LLaMA, Vicuna, GPT-4 and LLaVA. The dataset is CC BY NC 4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of research purposes.
+</p>
+    </div>
+  </section>
+
+</body>
+
+</html>
