@@ -186,6 +186,11 @@
         </div>
       </div>
     </div>
+    <div class="container is-max-desktop">
+    <p>
+      <h2 class="title is-5">Multi-Modal Reading (MMR) Benchmark includes 550 annotated question-answer pairs across 11 distinct tasks involving texts, fonts, visual elements, bounding boxes, spatial relations, and grounding, with carefully designed evaluation metrics.</h2>
+      </p>
+    </div>
   </section>
 
   <section class="hero teaser">
@@ -194,7 +199,7 @@
           <figure style="margin: 0 50px; text-align: center;">
               <img id="teaser" width="85%" src="images/pie.png">
               <figcaption>
-                  Question distributions of MMR
+                  Question Distributions of MMR
               </figcaption>
           </figure>
           <figure style="margin: 0 50px; text-align: center;">
@@ -205,6 +210,7 @@
           </figure>
       </div>
   </div> 
+ 
     <div class="container is-max-desktop">
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
@@ -214,7 +220,6 @@
             <p>
               Large language models (LMMs) have demonstrated impressive capabilities in understanding various types of image, including text-rich images. Most existing text-rich image benchmarks are simple extraction-based question answering, and many LMMs now easily achieve high scores. This means that current benchmarks fail to accurately reflect performance of different models, and a natural idea is to build a new benchmark to evaluate their complex reasoning and spatial understanding abilities. In this work, we propose the Multi-Modal Reading (MMR) benchmark in 11 diverse tasks to evaluate LMMs for text-rich image understanding. MMR is the first text-rich image benchmark built on human annotations with the help of language models. By evaluating several state-of-the-art LMMs, including GPT-4o, it reveals the limited capabilities of existing LMMs underscoring the value of our benchmark. 
             </p> 
-             
           <p>
             <strong>[UPDATE 07/19] Initial Paper Release of MMR.</strong>
          </p>
@@ -226,355 +231,281 @@
     </div>
   </section>
 
-  <section class="section"  style="background-color:#efeff081">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <h4 class="subtitle has-text-centered">
-          <figure style="text-align: center;">
-            <img id="teaser" width="100%" src="images/demo.png"> 
-          </figure>
-          <strong>MMR</strong>: Multi-Modal <strong>Reading</strong> Benchmark.
-        </h4>
-      </div>
+<section class="section" style="background-color:#efeff081">
+  <!-- Results. -->
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3">Leaderboard</h2>
     </div>
-  </section>
-
-  <section id="data" class="section">
-    <!-- Results. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-six-fifths">
-        <h2 class="title is-3">Enhanced Visual Instruction Data with Text-Rich Images</h2>
-      </div>
-    </div>
-    <!-- </div> -->
-    <!--/ Results. -->    
-  <div class="container is-max-desktop">
-  
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <div class="content has-text-justified">
-          <p>
-            Based on the LAION dataset, we collect 422K pretraining data based on OCR results. For finetuning data, we collect 16K high-quality instruction-following data by interacting with langauge-only GPT-4. Note that we also release a larger and more diverse finetuning dataset below (20K), which contains the 16K we used for the paper. The instruction files below contain the original LLaVA instructions. You can directly use them after merging the images into your LLaVA image folders. If you want to use them independently, you can remove the items contained in the original chat.json and llava_instruct_150k.json from LLaVA.
-  
-  <!-- CSS Code: Place this code in the document's head (between the 'head' tags) -->
-  <style>
-    table.GeneratedTable {
-      width: 100%;
-      background-color: #ffffff;
-      border-collapse: collapse;
-      border-width: 2px;
-      border-color: #c1c4c5;
-      border-style: solid;
-      color: #000000;
-    }
-    
-    table.GeneratedTable td, table.GeneratedTable th {
-      border-width: 2px;
-      border-color: #9b9d9e;
-      border-style: solid;
-      padding: 3px;
-    }
-    
-    table.GeneratedTable thead {
-      background-color: #6691ee;
-    }
-    </style>
-    
-    <!-- HTML Code: Place this code in the document's body (between the 'body' tags) where the table should appear -->
-    <div class="column is-six-fifths" width="80%">
-    <table class="GeneratedTable">
-      <thead>
-        <tr>
-          <th>Data file name</th>
-          <th>File Size</th>
-          <th>Sample Size</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="https://drive.google.com/file/d/1zWpqnAcaG_dUwkJJUvP9FH9zq__c-ODY/view?usp=sharing">Pretraining images</a> </td>
-          <td>12.5 GB</td>
-          <td>422K</td>
-        </tr>
-        <tr>
-          <td><a href="https://drive.google.com/file/d/1_GCHFwrPGjp-9tZlDBwVkdz-L1ymchKY/view?usp=sharing">Pretraining instructions</a></td>
-          <td>388.7 MB</td>
-          <td>595K + 422K</td>
-        </tr>
-        <tr>
-          <td><a href="https://drive.google.com/file/d/1Ms7OCjcFQ18Whmujszpc9bTp0Jy0Dye4/view?usp=sharing">Finetuning images</a></td>
-          <td>574.8 MB</td>
-          <td>20K</td>
-        </tr>
-        <tr>
-          <td><a href="https://drive.google.com/file/d/1ISdKOV1wwVkLHf5FNutctpOBa-CmNRFv/view?usp=sharing">Finetuning instructions - 16K</a></td>
-          <td>255.5 MB</td>
-          <td>158K + 16K</td>
-        </tr>
-        <tr>
-          <td><a href="https://drive.google.com/file/d/1NHO8lly6pUo-fdyOAyWeGiQJWRb9qggk/view?usp=sharing">Finetuning instructions - 20K</a></td>
-          <td>259.4 MB</td>
-          <td>158K + 20K</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-    <!-- Codes by Quackit.com -->
-    
-          </p>
-          <p>
-            Images are all text-rich images from LAION, where we apply different filtering rules for pretraining and finetuning.
-          </p>
-        </div>
+  <!-- </div> -->
   
-    
-  
-  
-  
-  
-        <div class="columns is-centered has-text-centered">
-        <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
-          <figure style="text-align: center;">
-            <img id="teaser" width="100%" src="images/pretrain_data.png">  
-            <figcaption>
-              Pretraining Images
-            </figcaption>
-          </figure>
-          <figure style="text-align: center;">
-            <img id="teaser" width="100%" src="images/finetune_data.png">  
-            <figcaption>
-              Finetuning Images
-            </figcaption>
-          </figure>
-        </div>
-        </div>
+  <!--/ Results. -->    
+<div class="container is-max-desktop">
 
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
-            <figure style="text-align: center;">
-              <img id="teaser" width="50%" src="images/legend.png"> 
-            </figure>
-          </div>
-          </div> 
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <div class="content has-text-justified">
+        <p>
+          The MMR benchmark evaluates the reasoning and spatial understanding capabilities of LMMs in text-rich image comprehension. The performance scores highlight the effectiveness of various models, offering guidance on model selection for real-world applications.
 
-          <p>
-            We visualize the root verb-noun pairs and objects that are being asked in instructions generated by GPT-4.
-          </p>
+<!-- CSS Code: Place this code in the document's head (between the 'head' tags) -->
+<style>
+  table.GeneratedTable {
+    width: 100%;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    border-width: 2px;
+    border-color: #c1c4c5;
+    border-style: solid;
+    color: #000000;
+  }
   
+  table.GeneratedTable td, table.GeneratedTable th {
+    border-width: 2px;
+    border-color: #9b9d9e;
+    border-style: solid;
+    padding: 3px;
+  }
   
+  table.GeneratedTable thead {
+    background-color: #6691ee;
+  }
+  </style>
   
-          <div class="columns is-centered has-text-centered">
-            <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
-              <figure style="text-align: center;">
-                <img id="teaser" width="100%" src="images/vb.png">  
-                <figcaption>
-                  Verb-Noun Pairs
-                </figcaption>
-              </figure>
-              <figure style="text-align: center;">
-                <img id="teaser" width="100%" src="images/pron.png">  
-                <figcaption>
-                  Objects
-                </figcaption>
-              </figure>
-            </div>
-          </div>    
-
-      </div>
-    </div>
-  
-  
-  </section>
-
-
-  <section class="section" style="background-color:#efeff081">
-    <!-- Results. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-six-fifths">
-        <h2 class="title is-3">Performance</h2>
-      </div>
-    </div>
-
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <div class="content has-text-justified">
-            <p>
-              We evaluate the performance of LLaVAR on four text-based VQA datasets: ST-VQA, OCR-VQA, TextVQA, and DocVQA. LLaVAR also achieves an accuracy of 91.42% on ScienceQA.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-          <div class="columns is-centered has-text-centered">
-            <div class="column is-six-fifths" style="display: flex; align-items: flex-start; justify-content: center;">  
-              <figure style="text-align: center;">
-                <img id="teaser" width="70%" src="images/myplot.png"> 
-              </figure>
-            </div>
-            </div> 
-  
-      </div>
-    </div>
-  
-  
-  </section>
-
-  <section class="section">
-    <!-- Results. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-six-fifths">
-        <h2 class="title is-3">Evaluation Data</h2>
-      </div>
-    </div>
-
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <div class="content has-text-justified">
-            <p>
-              We collect 50 instruction-following data on 50 text-rich images from LAION. You can use it for <a href="https://github.com/haotian-liu/LLaVA/tree/main#gpt-assisted-evaluation">GPT-4-based instruction-following evaluation</a>.
-  <!-- CSS Code: Place this code in the document's head (between the 'head' tags) -->
-  <style>
-    table.GeneratedTable {
-      width: 100%;
-      background-color: #ffffff;
-      border-collapse: collapse;
-      border-width: 2px;
-      border-color: #c1c4c5;
-      border-style: solid;
-      color: #000000;
-    }
-    
-    table.GeneratedTable td, table.GeneratedTable th {
-      border-width: 2px;
-      border-color: #9b9d9e;
-      border-style: solid;
-      padding: 3px;
-    }
-    
-    table.GeneratedTable thead {
-      background-color: #6691ee;
-    }
+<!-- HTML Code: Place this code in the document's body (between the 'body' tags) where the table should appear -->
+<div class="column is-six-fifths" width="80%">
+  <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:1;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-jvz3{background-color:rgba(230, 230, 230, 0.5);border-color:inherit;text-align:center;vertical-align:top}
+    .tg .tg-jr47{background-color:#E6E6E6;border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
+    .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+    .tg .tg-7lf8{background-color:#CCC;border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-vudv{background-color:#CCC;border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
     </style>
-    
-    <!-- HTML Code: Place this code in the document's body (between the 'body' tags) where the table should appear -->
-    <div class="column is-six-fifths" width="80%">
-    <table class="GeneratedTable">
-      <thead>
-        <tr>
-          <th>Data file name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="https://drive.google.com/file/d/1tQQ6CX0fCH2kMuI9imrcEkYRWoVKScWX/view?usp=sharing">Images</a> </td>
-        </tr>
-        <tr>
-          <td><a href="./files/caps_laion_50_val.jsonl">GPT-4 Evaluation Contexts</a></td>
-        </tr>
-        <tr>
-          <td><a href="./files/rule_read_v3.json">GPT-4 Evaluation Rules</a></td>
-        </tr>
-        <tr>
-          <td><a href="./files/qa50_questions.jsonl">Questions</a></td>
-        </tr>
-        <tr>
-          <td><a href="./files/qa50_gpt4_answer.jsonl">GPT-4 Answers</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-          <div class="columns is-centered has-text-centered">
-            <div>
-              <figure style="text-align: center;">
-                <img id="teaser" width="100%" src="images/read_whole.png"> 
-              </figure>
-            </div>
-          
-            </div> 
-  
-      </div>
-    </div>
-    
-  </section>
-
-  <section class="section">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-six-fifths">
-        <h2 class="title is-3">More Examples</h2>
-      </div>
-    </div>
-
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <div class="content has-text-justified">
-            <p>
-              We show more instruction-following examples below:
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-          <div class="columns is-centered has-text-centered">
-            <div>
-              <figure style="text-align: center;">
-                <img id="teaser" width="80%" src="images/demo1.png"> 
-              </figure>
-            </div>
-          
-            </div> 
-  
-      </div>
-    </div>
-    <br>
-    <br>
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-          <div class="columns is-centered has-text-centered">
-            <div>
-              <figure style="text-align: center;">
-                <img id="teaser" width="80%" src="images/demo2.png"> 
-              </figure>
-            </div>
-          
-            </div> 
-  
-      </div>
-    </div>
-    <br>
-    <br>
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-          <div class="columns is-centered has-text-centered">
-            <div>
-              <figure style="text-align: center;">
-                <img id="teaser" width="80%" src="images/demo3.png"> 
-              </figure>
-            </div>
-          
-            </div> 
-  
-      </div>
-    </div>
-  </section>
+    <table class="tg"><thead>
+      <tr>
+        <th class="tg-7lf8"></th>
+        <th class="tg-7lf8"></th>
+        <th class="tg-jr47" colspan="2">Text</th>
+        <th class="tg-vudv" colspan="2">Font</th>
+        <th class="tg-jr47" colspan="2">Localization</th>
+        <th class="tg-vudv" colspan="3">Spatial Relation</th>
+        <th class="tg-jr47" colspan="3">Grounding</th>
+        <th class="tg-7lf8"></th>
+      </tr></thead>
+    <tbody>
+      <tr>
+        <td class="tg-vudv">Model</td>
+        <td class="tg-vudv">Size</td>
+        <td class="tg-jr47">Label</td>
+        <td class="tg-jr47">Pos</td>
+        <td class="tg-vudv">Size</td>
+        <td class="tg-vudv">Color</td>
+        <td class="tg-jr47">Obj</td>
+        <td class="tg-jr47">Text</td>
+        <td class="tg-vudv">O-T</td>
+        <td class="tg-vudv">O-O</td>
+        <td class="tg-vudv">T-T</td>
+        <td class="tg-jr47">O-Box</td>
+        <td class="tg-jr47">T-PNLS</td>
+        <td class="tg-jr47">T-Box</td>
+        <td class="tg-vudv">Total</td>
+      </tr>
+      <tr>
+        <td class="tg-jr47">GPT-4o</td>
+        <td class="tg-jr47">-</td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">46</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">33</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">43</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">42</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">42</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">41</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">37</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">33</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">39</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">37</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">46</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">19</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">458</span></td>
+      </tr>
+      <tr>
+        <td class="tg-jr47">GPT-4V</td>
+        <td class="tg-jr47">-</td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">43</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">33</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">43</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">40</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">37</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">38</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">26</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">26</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">45</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">26</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">48</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">415</span></td>
+      </tr>
+      <tr>
+        <td class="tg-jr47">LLaVA-NEXT</td>
+        <td class="tg-jr47">34B</td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">39</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">28</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">42</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">39</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">41</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">41</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">28</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">31</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">44</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">44</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">31</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">412</span></td>
+      </tr>
+      <tr>
+        <td class="tg-jr47">Phi-3-Vision</td>
+        <td class="tg-jr47">4B</td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">40</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">34</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">42</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">39</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">41</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">42</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">31</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">33</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">42</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">38</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">13</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">397</span></td>
+      </tr>
+      <tr>
+        <td class="tg-jr47">LLaVA-NEXT</td>
+        <td class="tg-jr47">13B</td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">39</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">28</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">34</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">30</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">37</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">36</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">19</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">32</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">32</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">39</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">40</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">369</span></td>
+      </tr>
+      <tr>
+        <td class="tg-jr47">Qwen-vl-max</td>
+        <td class="tg-jr47">-</td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">39</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">27</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">41</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">36</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">34</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">33</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">26</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">32</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">37</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">24</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">32</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">366</span></td>
+      </tr>
+      <tr>
+        <td class="tg-jr47">Qwen-vl-plus</td>
+        <td class="tg-jr47">-</td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">38</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">23</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">32</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">35</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">26</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">23</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">24</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">23</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">27</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">34</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">22</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">310</span></td>
+      </tr>
+      <tr>
+        <td class="tg-jr47">Idefics-2</td>
+        <td class="tg-jr47">8B</td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">36</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">23</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">36</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">29</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">31</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">27</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">20</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">21</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">33</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">256</span></td>
+      </tr>
+      <tr>
+        <td class="tg-jr47">LLaVA-1.5</td>
+        <td class="tg-jr47">13B</td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">30</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">25</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">20</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">32</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">17</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">16</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">24</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">26</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">39</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">243</span></td>
+      </tr>
+      <tr>
+        <td class="tg-jr47">Monkey-Chat</td>
+        <td class="tg-jr47">7B</td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">36</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">22</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">33</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">27</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">26</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">16</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">18</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">27</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">214</span></td>
+      </tr>
+      <tr>
+        <td class="tg-jr47">Idefics</td>
+        <td class="tg-jr47">80B</td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">36</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">23</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">36</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">29</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">31</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">27</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">20</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">21</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">33</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+        <td class="tg-c3ow"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+        <td class="tg-jvz3"><span style="font-weight:normal;font-style:normal;color:#000">139</span></td>
+      </tr>
+    </tbody></table>
+</div>
+</section>
 
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
